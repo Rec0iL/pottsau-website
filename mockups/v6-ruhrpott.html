@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>POTTSAU Airsoft – V6 Ruhrpott</title>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500&family=Permanent+Marker&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--kohle:#141414;--stahl:#2c2f32;--stahl2:#43474b;--rost:#c4561e;--senf:#f2b705;--ketchup:#c8201a;--bier:#f6a800;--schaum:#fff4d2;--pig:#f4a6b4;--blau:#1d4f8a;--weiss:#f4f1e8;--t:#efe9da}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--kohle);color:var(--t);font:17px/1.6 'Barlow',sans-serif;
+ background-image:radial-gradient(rgba(255,255,255,.035) 1px,transparent 1.5px);background-size:14px 14px}
+h1,h2,h3,.slab{font-family:'Alfa Slab One',serif;font-weight:400}
+.marker{font-family:'Permanent Marker',cursive}
+svg.i{display:block}
+.hazard{height:14px;background:repeating-linear-gradient(-45deg,var(--senf) 0 14px,var(--kohle) 14px 28px)}
+
+/* Emailleschild */
+.enamel{position:relative;background:var(--blau);color:var(--weiss);border:3px solid var(--weiss);border-radius:7px;box-shadow:0 0 0 3px var(--blau),0 7px 10px rgba(0,0,0,.65),inset 0 2px 0 rgba(255,255,255,.18),inset 0 -3px 6px rgba(0,0,0,.35);font-family:'Alfa Slab One',serif;text-transform:uppercase;letter-spacing:.05em}
+.enamel::before,.enamel::after{content:"";position:absolute;top:50%;width:7px;height:7px;margin-top:-3.5px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#e8e8e8,#777);box-shadow:0 1px 1px rgba(0,0,0,.6)}
+.enamel::before{left:6px}.enamel::after{right:6px}
+
+header{position:sticky;top:0;z-index:30;background:var(--stahl);border-bottom:5px solid var(--rost);display:flex;justify-content:space-between;align-items:center;padding:8px 22px;box-shadow:0 6px 14px rgba(0,0,0,.6)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--weiss);font:400 25px 'Alfa Slab One';letter-spacing:.04em}
+.logo svg{width:44px;height:44px}
+.logo span{color:var(--pig)}
+nav{display:flex;gap:12px}
+nav a{padding:5px 22px;text-decoration:none;font-size:14px}
+nav a:hover{background:var(--rost);border-color:var(--senf)}
+#burger{display:none;background:var(--blau);border:3px solid var(--weiss);color:var(--weiss);font-size:20px;padding:0 10px;border-radius:5px}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#0c0c0f 0%,#241713 50%,#6d2f10 82%,#c4561e 100%);min-height:88vh;display:grid;align-items:center;padding:60px 24px 200px}
+.hero .sky-stars{position:absolute;inset:0;background-image:radial-gradient(#fff 1px,transparent 1.5px);background-size:90px 90px;opacity:.25;mask:linear-gradient(180deg,#000,transparent 55%)}
+.skyline{position:absolute;left:0;right:0;bottom:0;width:100%;height:230px}
+.smoke circle{fill:#9a8f88;opacity:.28}
+.hero-in{position:relative;z-index:2;max-width:1160px;margin:auto;display:grid;grid-template-columns:1.2fr 1fr;gap:20px;align-items:center;width:100%}
+.glueck{font:400 clamp(20px,3vw,30px) 'Permanent Marker';color:var(--senf);transform:rotate(-3deg);display:inline-block;margin-bottom:6px;text-shadow:2px 2px 0 #000}
+.hero h1{font-size:clamp(54px,10.5vw,128px);line-height:.95;color:var(--weiss);text-shadow:5px 5px 0 #000,0 0 30px rgba(196,86,30,.4)}
+.hero h1 span{color:var(--pig)}
+.hero p.lead{font-size:19px;max-width:560px;margin:20px 0 28px}
+.btn{display:inline-block;text-decoration:none;font:400 17px 'Alfa Slab One';letter-spacing:.06em;text-transform:uppercase;color:#1b1000;background:var(--senf);padding:12px 28px;border:3px solid #000;border-radius:6px;box-shadow:4px 4px 0 #000}
+.btn:hover{background:var(--bier);transform:translate(2px,2px);box-shadow:2px 2px 0 #000}
+.btn.alt{background:var(--weiss)}
+.pigwrap{position:relative;display:grid;place-items:center}
+.pigwrap .pig{width:min(100%,380px);filter:drop-shadow(0 14px 14px rgba(0,0,0,.6))}
+.bubble{position:absolute;right:-6px;top:-14px;background:var(--weiss);color:#111;font:400 18px 'Permanent Marker';padding:10px 16px;border-radius:16px 16px 16px 2px;transform:rotate(4deg);box-shadow:3px 3px 0 #000;border:3px solid #000}
+.float{position:absolute;filter:drop-shadow(0 8px 6px rgba(0,0,0,.6))}
+.float.b{left:-4%;bottom:6%;width:92px;transform:rotate(-10deg)}
+.float.w{right:-6%;bottom:-2%;width:170px;transform:rotate(6deg)}
+
+/* Ticker */
+.ticker{background:var(--senf);color:#141414;border-block:4px solid #000;overflow:hidden;white-space:nowrap;font:400 20px 'Alfa Slab One';letter-spacing:.08em;padding:8px 0}
+.ticker div{display:inline-block;animation:run 26s linear infinite;padding-left:0}
+.ticker span{margin:0 22px}
+@keyframes run{to{transform:translateX(-50%)}}
+
+section{padding:84px 24px;max-width:1160px;margin:auto}
+.head{display:flex;align-items:center;gap:18px;margin-bottom:38px;flex-wrap:wrap}
+.head h2{font-size:clamp(30px,5vw,50px);color:var(--weiss);text-shadow:3px 3px 0 var(--rost)}
+.head .marker{color:var(--senf);font-size:22px;transform:rotate(-3deg)}
+.head svg{width:54px;height:54px}
+
+.about{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:start}
+.about p+p{margin-top:14px}
+.karte{background:var(--weiss);color:#1a1a1a;padding:30px 30px 34px;border-radius:4px;box-shadow:0 12px 22px rgba(0,0,0,.65);transform:rotate(1.2deg);position:relative;border:2px solid #1a1a1a;outline:2px solid var(--ketchup);outline-offset:-10px}
+.karte h3{text-align:center;font-size:26px;color:var(--ketchup);line-height:1.1}
+.karte .sub{text-align:center;font:600 13px 'Barlow Condensed';letter-spacing:.3em;text-transform:uppercase;margin:4px 0 16px}
+.karte .row{display:flex;align-items:baseline;gap:6px;padding:7px 0;font-weight:500}
+.karte .row i{flex:1;border-bottom:2px dotted #444;transform:translateY(-4px)}
+.karte .row b{font:400 20px 'Alfa Slab One';color:var(--ketchup)}
+.karte small{display:block;text-align:center;margin-top:12px;font:400 17px 'Permanent Marker';color:#333}
+.werte{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;margin-top:50px}
+.wert{background:var(--stahl);border:3px solid #000;border-radius:8px;padding:22px;text-align:center;box-shadow:5px 5px 0 #000}
+.wert svg{width:96px;height:80px;margin:0 auto 8px}
+.wert h3{font-size:20px;color:var(--senf);margin-bottom:4px}
+.wert p{font-size:15px;opacity:.9}
+
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:30px}
+.foto{background:var(--weiss);padding:10px 10px 16px;border-radius:3px;box-shadow:0 10px 18px rgba(0,0,0,.65);color:#1a1a1a;position:relative}
+.foto .img{aspect-ratio:4/3;display:grid;place-items:center;font:700 13px 'Barlow Condensed';letter-spacing:.3em;color:rgba(255,255,255,.55);background:linear-gradient(150deg,#58603a,#262c15);position:relative}
+.foto:nth-child(3n+2) .img{background:linear-gradient(150deg,#6a5a48,#2a211a)}
+.foto:nth-child(3n) .img{background:linear-gradient(150deg,#4a5a66,#1d262d)}
+.foto h3{font-size:17px;margin-top:12px;color:#1a1a1a}
+.foto p{font-size:15px;color:#333}
+.deckel{position:absolute;z-index:2;right:-14px;top:-18px;width:74px;height:74px;border-radius:50%;display:grid;place-items:center;text-align:center;font:400 12px/1.15 'Alfa Slab One';color:#4a2a10;background:radial-gradient(circle,#e8d3a0 0 55%,#d8bd85 56% 62%,#e8d3a0 63%);border:2px solid #b49355;box-shadow:0 4px 6px rgba(0,0,0,.6);transform:rotate(12deg)}
+.deckel small{display:block;font:600 10px 'Barlow Condensed';letter-spacing:.1em}
+.neu{position:absolute;left:-10px;top:14px;background:var(--ketchup);color:#fff;font:400 14px 'Alfa Slab One';padding:2px 14px;transform:rotate(-6deg);border:2px solid #000;box-shadow:2px 2px 0 #000;z-index:1}
+
+.sp{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:30px;justify-items:center}
+.coaster{width:200px;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;text-align:center;padding:30px;font:400 20px/1.15 'Alfa Slab One';color:#4a2a10;
+ background:radial-gradient(circle,#ecd9a8 0 56%,#d2b377 57% 61%,#ecd9a8 62% 100%);border:3px solid #a98a4a;box-shadow:0 8px 12px rgba(0,0,0,.65),inset 0 0 18px rgba(120,80,30,.35)}
+.coaster small{display:block;font:700 12px 'Barlow Condensed';letter-spacing:.2em;color:var(--ketchup);margin-top:4px}
+.coaster:nth-child(even){transform:rotate(8deg)}.coaster:nth-child(odd){transform:rotate(-5deg)}
+.hint{text-align:center;margin-top:34px;font:400 22px 'Permanent Marker';color:var(--senf)}
+
+.contact{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:start}
+.soc{display:grid;gap:18px}
+.soc a{display:flex;justify-content:space-between;align-items:center;padding:14px 34px;text-decoration:none;font-size:18px}
+.soc a span{font:500 15px 'Barlow Condensed';letter-spacing:.1em;opacity:.9;text-transform:none}
+.soc a:hover{background:var(--rost)}
+.bon{background:#fbfaf4;color:#1a1a1a;font:400 16px 'Courier Prime',monospace;padding:30px 28px 46px;box-shadow:0 12px 22px rgba(0,0,0,.65);
+ -webkit-mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/18px 100%;mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/18px 100%}
+.bon h3{text-align:center;font-size:22px;color:#1a1a1a}
+.bon .c{text-align:center;font-size:13px;margin:2px 0 14px;border-bottom:2px dashed #1a1a1a;padding-bottom:12px}
+.bon form{display:grid;gap:12px}
+.bon input,.bon textarea{width:100%;background:transparent;border:0;border-bottom:2px dashed #555;padding:8px 2px;font:inherit;color:#1a1a1a}
+.bon input:focus,.bon textarea:focus{outline:0;background:rgba(242,183,5,.25)}
+.bon .tot{display:flex;justify-content:space-between;border-top:2px dashed #1a1a1a;padding-top:10px;font-weight:700}
+.bon .btn{text-align:center}
+.imp{background:var(--stahl);border:3px solid #000;border-radius:8px;padding:26px;box-shadow:5px 5px 0 #000;font-size:15px}
+.imp h3{color:var(--senf);margin-bottom:8px;font-size:20px}
+
+footer{background:var(--stahl);border-top:5px solid var(--rost);text-align:center;padding:34px 20px 30px}
+footer .gl{font:400 28px 'Permanent Marker';color:var(--senf);margin-bottom:6px}
+footer a{color:var(--pig);margin:0 10px}
+footer small{opacity:.75;letter-spacing:.1em}
+@media(max-width:860px){
+ #burger{display:block}
+ nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--stahl);padding:16px 22px;border-bottom:5px solid var(--rost)}
+ nav.open{display:flex}
+ .hero-in,.about,.contact{grid-template-columns:1fr}
+ .pigwrap{margin-top:30px;max-width:340px;margin-inline:auto}
+ .float.w{right:-2%}
+ .karte{transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- Illustrationen als wiederverwendbare Symbole -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+ <defs>
+  <clipPath id="glassclip"><path d="M24 22L76 22 68 72Q63 100 54 112L54 134Q72 138 74 150L26 150Q28 138 46 134L46 112Q37 100 32 72Z"/></clipPath>
+  <linearGradient id="beerg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffc21a"/><stop offset="1" stop-color="#d98200"/></linearGradient>
+  <symbol id="pig" viewBox="0 0 200 200">
+   <path d="M44 76C24 36 30 14 70 38Z" fill="#e98a9c" stroke="#2a1515" stroke-width="5" stroke-linejoin="round"/>
+   <path d="M156 76C176 36 170 14 130 38Z" fill="#e98a9c" stroke="#2a1515" stroke-width="5" stroke-linejoin="round"/>
+   <ellipse cx="100" cy="116" rx="70" ry="62" fill="#f4a6b4" stroke="#2a1515" stroke-width="5"/>
+   <ellipse cx="62" cy="136" rx="13" ry="9" fill="#ee8398" opacity=".7"/><ellipse cx="138" cy="136" rx="13" ry="9" fill="#ee8398" opacity=".7"/>
+   <!-- Helm -->
+   <path d="M30 96C32 34 70 18 100 18C130 18 168 34 170 96C150 82 128 80 100 80C72 80 50 82 30 96Z" fill="#4b5320" stroke="#1a1d0c" stroke-width="5" stroke-linejoin="round"/>
+   <path d="M60 40c10-8 22-6 24 4s-12 14-24-4zM118 30c12-4 24 4 20 14s-18 6-20-14zM98 58c10-2 20 4 16 12s-18 2-16-12z" fill="#2c3314" opacity=".85"/>
+   <path d="M44 62c6-18 22-28 40-30" stroke="#6b7a30" stroke-width="3" fill="none" stroke-linecap="round" opacity=".7"/>
+   <rect x="86" y="14" width="28" height="8" rx="2" fill="#2a2d1a" stroke="#14160a" stroke-width="3"/>
+   <!-- Brille hochgeschoben -->
+   <rect x="52" y="64" width="96" height="22" rx="9" fill="#1d1d1d" stroke="#000" stroke-width="3"/>
+   <rect x="58" y="68" width="38" height="14" rx="6" fill="#7fc4e0"/><rect x="104" y="68" width="38" height="14" rx="6" fill="#7fc4e0"/>
+   <path d="M62 71l14 0M108 71l14 0" stroke="#fff" stroke-opacity=".7" stroke-width="3" stroke-linecap="round"/>
+   <!-- Gesicht -->
+   <circle cx="72" cy="108" r="9" fill="#fff" stroke="#2a1515" stroke-width="3"/><circle cx="128" cy="108" r="9" fill="#fff" stroke="#2a1515" stroke-width="3"/>
+   <circle cx="74" cy="110" r="4.5" fill="#1a0f0f"/><circle cx="126" cy="110" r="4.5" fill="#1a0f0f"/>
+   <path d="M58 94l26 8M142 94l-26 8" stroke="#2a1515" stroke-width="5" stroke-linecap="round"/>
+   <ellipse cx="100" cy="140" rx="30" ry="22" fill="#f08c9f" stroke="#2a1515" stroke-width="5"/>
+   <ellipse cx="90" cy="140" rx="5" ry="8" fill="#6b2638"/><ellipse cx="110" cy="140" rx="5" ry="8" fill="#6b2638"/>
+   <path d="M76 168q24 14 48 0" stroke="#2a1515" stroke-width="5" fill="none" stroke-linecap="round"/>
+   <path d="M118 166l4 8 5-8z" fill="#fff" stroke="#2a1515" stroke-width="2"/>
+  </symbol>
+  <symbol id="wurst" viewBox="0 0 200 150">
+   <ellipse cx="100" cy="96" rx="94" ry="46" fill="#000" opacity=".25"/>
+   <ellipse cx="100" cy="88" rx="94" ry="46" fill="#f4f1e8" stroke="#b9b5a6" stroke-width="2"/>
+   <ellipse cx="100" cy="88" rx="70" ry="31" fill="#e6e2d2"/>
+   <!-- Pommes -->
+   <g fill="#f2c230" stroke="#c4961a" stroke-width="1.5">
+    <rect x="128" y="22" width="11" height="58" rx="3" transform="rotate(14 128 22)"/><rect x="141" y="18" width="11" height="60" rx="3" transform="rotate(4 141 18)"/>
+    <rect x="154" y="22" width="11" height="56" rx="3" transform="rotate(-8 154 22)"/><rect x="116" y="30" width="11" height="52" rx="3" transform="rotate(26 116 30)"/>
+    <rect x="166" y="30" width="11" height="48" rx="3" transform="rotate(-18 166 30)"/>
+   </g>
+   <!-- Wurstscheiben -->
+   <g fill="#8a3a1c" stroke="#4e1f0d" stroke-width="3">
+    <ellipse cx="46" cy="92" rx="16" ry="21" transform="rotate(-18 46 92)"/><ellipse cx="72" cy="94" rx="16" ry="21" transform="rotate(-14 72 94)"/>
+    <ellipse cx="98" cy="96" rx="16" ry="21" transform="rotate(-8 98 96)"/><ellipse cx="124" cy="97" rx="15" ry="20" transform="rotate(-4 124 97)"/>
+   </g>
+   <g fill="#b25a32"><ellipse cx="46" cy="92" rx="9" ry="13" transform="rotate(-18 46 92)"/><ellipse cx="72" cy="94" rx="9" ry="13" transform="rotate(-14 72 94)"/><ellipse cx="98" cy="96" rx="9" ry="13" transform="rotate(-8 98 96)"/><ellipse cx="124" cy="97" rx="8" ry="12" transform="rotate(-4 124 97)"/></g>
+   <!-- Sauce + Curry -->
+   <path d="M30 82C50 62 78 74 96 72C118 70 132 80 142 92C128 90 120 108 96 106C70 108 62 98 44 108C34 104 26 96 30 82Z" fill="#c8201a" opacity=".92"/>
+   <path d="M44 80c14-10 30-2 44-4" stroke="#ff6a5a" stroke-width="4" fill="none" stroke-linecap="round" opacity=".7"/>
+   <g fill="#e8a500"><circle cx="56" cy="84" r="2.2"/><circle cx="70" cy="80" r="2"/><circle cx="84" cy="86" r="2.4"/><circle cx="100" cy="82" r="2"/><circle cx="114" cy="88" r="2.3"/><circle cx="64" cy="96" r="2"/><circle cx="92" cy="98" r="2.2"/><circle cx="126" cy="94" r="2"/><circle cx="48" cy="92" r="2"/></g>
+   <path d="M118 66L132 56M126 70L142 62" stroke="#c9a15b" stroke-width="5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="beer" viewBox="0 0 100 160">
+   <ellipse cx="50" cy="153" rx="30" ry="5" fill="#000" opacity=".3"/>
+   <g clip-path="url(#glassclip)"><rect x="0" y="34" width="100" height="80" fill="url(#beerg)"/>
+    <g fill="#fff" opacity=".45"><circle cx="40" cy="96" r="2"/><circle cx="52" cy="82" r="2.4"/><circle cx="60" cy="100" r="1.8"/><circle cx="44" cy="64" r="2"/><circle cx="58" cy="58" r="2.4"/><circle cx="36" cy="48" r="1.8"/><circle cx="64" cy="76" r="1.6"/></g>
+    <rect x="30" y="34" width="8" height="60" fill="#fff" opacity=".18"/></g>
+   <g fill="#fff4d2" stroke="#e3d3a0" stroke-width="1.5"><circle cx="30" cy="22" r="12"/><circle cx="44" cy="17" r="13"/><circle cx="58" cy="17" r="13"/><circle cx="71" cy="22" r="12"/><rect x="26" y="22" width="48" height="14"/></g>
+   <path d="M24 22L76 22 68 72Q63 100 54 112L54 134Q72 138 74 150L26 150Q28 138 46 134L46 112Q37 100 32 72Z" fill="none" stroke="#dcecf0" stroke-width="3.5" stroke-linejoin="round" opacity=".9"/>
+  </symbol>
+  <symbol id="hammer" viewBox="0 0 100 100">
+   <g transform="rotate(45 50 50)"><rect x="47" y="10" width="6" height="84" rx="2" fill="#8b6a3e"/><rect x="29" y="8" width="42" height="17" rx="2" fill="#8d9298" stroke="#3a3d40" stroke-width="3"/></g>
+   <g transform="rotate(-45 50 50)"><rect x="47" y="10" width="6" height="84" rx="2" fill="#8b6a3e"/><path d="M30 12H70L62 28H38Z" fill="#8d9298" stroke="#3a3d40" stroke-width="3" stroke-linejoin="round"/></g>
+  </symbol>
+ </defs>
+</svg>
+
+<header>
+ <a class="logo" href="#top"><svg class="i"><use href="#pig"/></svg><b style="font-weight:400">POTT<span>SAU</span></b></a>
+ <button id="burger" onclick="document.querySelector('nav').classList.toggle('open')">☰</button>
+ <nav>
+  <a class="enamel" href="#top">Start</a><a class="enamel" href="#galerie">Galerie</a><a class="enamel" href="#sponsoren">Sponsoren</a><a class="enamel" href="#kontakt">Kontakt</a><a class="enamel" href="#impressum">Impressum</a>
+ </nav>
+</header>
+
+<div class="hero" id="top">
+ <div class="sky-stars"></div>
+ <svg class="skyline" viewBox="0 0 1200 230" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+  <g class="smoke"><circle cx="918" cy="58" r="26"/><circle cx="944" cy="36" r="34"/><circle cx="985" cy="20" r="40"/><circle cx="1035" cy="10" r="44"/><circle cx="262" cy="70" r="22"/><circle cx="284" cy="46" r="30"/><circle cx="318" cy="26" r="36"/></g>
+  <g fill="#0d0d0d" stroke="none">
+   <path d="M0 230V178Q70 120 160 150T330 190V230Z"/>
+   <!-- Schornsteine -->
+   <path d="M246 230L252 82H274L280 230Z"/><rect x="249" y="76" width="28" height="8"/>
+   <path d="M906 230L912 90H932L938 230Z"/><rect x="909" y="84" width="26" height="7"/>
+   <!-- Kühlturm -->
+   <path d="M720 230Q744 190 738 140Q732 110 748 96H826Q842 110 836 140Q830 190 854 230Z"/>
+   <!-- Hallen -->
+   <path d="M330 230V170H360L360 158L400 170V158L440 170V158L480 170V230Z"/>
+   <rect x="496" y="150" width="86" height="80"/>
+   <path d="M980 230V162H1020V150L1060 162V150L1100 162V150L1140 162V230Z"/>
+   <rect x="1140" y="190" width="60" height="40"/>
+   <!-- Gaskessel -->
+   <path d="M640 230V150Q640 126 672 126T704 150V230Z"/>
+  </g>
+  <!-- Fördergerüst (Doppelbock) -->
+  <g fill="none" stroke="#0d0d0d" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+   <path d="M586 230L618 52L650 230M600 150H636M594 190H642M606 112H630"/>
+   <path d="M600 150L636 190M636 150L600 190M608 112L626 150M628 112L610 150"/>
+  </g>
+  <g fill="none" stroke="#0d0d0d" stroke-width="7"><circle cx="618" cy="44" r="19"/><path d="M618 25V63M599 44H637" stroke-width="4"/></g>
+  <rect x="0" y="222" width="1200" height="8" fill="#0d0d0d"/>
+ </svg>
+
+ <div class="hero-in">
+  <div>
+   <span class="glueck">Glück auf, Kumpel!</span>
+   <h1>POTT<span>SAU</span></h1>
+   <p class="lead">Airsoft aus'm Pott: laut, dreckig, herzlich – und nach'm Spiel gibt's Currywurst Pommes und ein kühles Pils. Willkommen bei der Pottsau!</p>
+   <a class="btn" href="#galerie">Zur Galerie</a> <a class="btn alt" href="#kontakt">Mitspielen</a>
+  </div>
+  <div class="pigwrap">
+   <span class="bubble">Wat is los?!</span>
+   <svg class="pig i" viewBox="0 0 200 200"><use href="#pig"/></svg>
+   <svg class="float b i" viewBox="0 0 100 160"><use href="#beer"/></svg>
+   <svg class="float w i" viewBox="0 0 200 150"><use href="#wurst"/></svg>
+  </div>
+ </div>
+</div>
+
+<div class="ticker"><div><span>★ CURRYWURST ROT-WEISS</span><span>★ GLÜCK AUF</span><span>★ FEIERABENDBIER</span><span>★ SCHLÄGEL &amp; EISEN</span><span>★ PILS VOM FASS</span><span>★ POTT FOREVER</span><span>★ KUMPELS</span><span>★ CURRYWURST ROT-WEISS</span><span>★ GLÜCK AUF</span><span>★ FEIERABENDBIER</span><span>★ SCHLÄGEL &amp; EISEN</span><span>★ PILS VOM FASS</span><span>★ POTT FOREVER</span><span>★ KUMPELS</span></div></div>
+
+<section id="team">
+ <div class="head"><svg class="i" viewBox="0 0 100 100"><use href="#hammer"/></svg><h2>Wer wir sind</h2><span class="marker">ehrlich &amp; direkt</span></div>
+ <div class="about">
+  <div>
+   <p>Die Pottsau wurde 2019 gegründet – von ein paar Kumpels, die nach der Schicht mehr wollten als Sofa. Wir spielen MilSim, Woodland und CQB, immer mit Fairplay und ’ner großen Portion Humor.</p>
+   <p>Bei uns zählt Zusammenhalt wie auf’m Pütt: Einer für alle, alle für den Nachschub an Currywurst. Neue Säue sind willkommen – meld dich einfach! <em>(Blindtext – wird durch euren Text ersetzt.)</em></p>
+  </div>
+  <div class="karte">
+   <h3>Die Karte vom Pott</h3><div class="sub">Tagesangebot · Pottsau-Imbiss</div>
+   <div class="row">Säue im Team<i></i><b>18</b></div>
+   <div class="row">Gegründet<i></i><b>2019</b></div>
+   <div class="row">Einsätze<i></i><b>40+</b></div>
+   <div class="row">Einsatzgebiet<i></i><b>NRW</b></div>
+   <div class="row">Currywurst Pommes<i></i><b>∞</b></div>
+   <small>… und dat Pils is auch kalt!</small>
+  </div>
+ </div>
+ <div class="werte">
+  <div class="wert"><svg class="i" viewBox="0 0 200 150"><use href="#wurst"/></svg><h3>Currywurst-Prinzip</h3><p>Schnell, deftig, ehrlich – so spielen und so reden wir.</p></div>
+  <div class="wert"><svg class="i" viewBox="0 0 100 160"><use href="#beer"/></svg><h3>Feierabendbier</h3><p>Nach dem Spiel sitzen wir zusammen. Gewinnen ist schön, Pils ist besser.</p></div>
+  <div class="wert"><svg class="i" viewBox="0 0 200 200"><use href="#pig"/></svg><h3>Fairplay</h3><p>Hit ist Hit. Wir sind Säue, aber keine Schweine.</p></div>
+ </div>
+</section>
+
+<div class="hazard"></div>
+
+<section id="galerie">
+ <div class="head"><svg class="i" viewBox="0 0 100 160"><use href="#beer"/></svg><h2>Galerie</h2><span class="marker">frisch gezapft – neueste zuerst</span></div>
+ <div class="gal">
+  <div class="foto"><span class="neu">NEU</span><span class="deckel"><span>05.10.<small>2026</small></span></span><div class="img">FOTO 01</div><h3>Nachtspiel Zeche West</h3><p>Beschreibung aus dem Upload-Tool.</p></div>
+  <div class="foto"><span class="deckel"><span>21.09.<small>2026</small></span></span><div class="img">FOTO 02</div><h3>Squad-Briefing</h3><p>Kurzer Text zum Foto.</p></div>
+  <div class="foto"><span class="deckel"><span>07.09.<small>2026</small></span></span><div class="img">FOTO 03</div><h3>Sturm auf die Halle</h3><p>Kurzer Text zum Foto.</p></div>
+  <div class="foto"><span class="deckel"><span>17.08.<small>2026</small></span></span><div class="img">FOTO 04</div><h3>Gruppenbild Sommer-Op</h3><p>Kurzer Text zum Foto.</p></div>
+  <div class="foto"><span class="deckel"><span>29.06.<small>2026</small></span></span><div class="img">FOTO 05</div><h3>Funkcheck</h3><p>Kurzer Text zum Foto.</p></div>
+  <div class="foto"><span class="deckel"><span>14.06.<small>2026</small></span></span><div class="img">FOTO 06</div><h3>Aufmarsch im Wald</h3><p>Kurzer Text zum Foto.</p></div>
+ </div>
+</section>
+
+<div class="hazard"></div>
+
+<section id="sponsoren">
+ <div class="head"><svg class="i" viewBox="0 0 100 100"><use href="#hammer"/></svg><h2>Sponsoren</h2><span class="marker">die Spendierhosen</span></div>
+ <div class="sp">
+  <div class="coaster"><div>Sponsor<br>Eins<small>HAUPTSPONSOR</small></div></div>
+  <div class="coaster"><div>Sponsor<br>Zwei<small>PARTNER</small></div></div>
+  <div class="coaster"><div>Sponsor<br>Drei<small>PARTNER</small></div></div>
+  <div class="coaster"><div>Sponsor<br>Vier<small>UNTERSTÜTZER</small></div></div>
+ </div>
+ <p class="hint">Dein Logo auf’m Bierdeckel? Ein Kasten Pils reicht schon als Anfang!</p>
+</section>
+
+<section id="kontakt">
+ <div class="head"><svg class="i" viewBox="0 0 200 150"><use href="#wurst"/></svg><h2>Social Media &amp; Kontakt</h2><span class="marker">Bestellung aufgeben</span></div>
+ <div class="contact">
+  <div class="soc">
+   <a class="enamel" href="#">Instagram <span>@pottsau</span></a>
+   <a class="enamel" href="#">Facebook <span>/pottsau</span></a>
+   <a class="enamel" href="#">YouTube <span>/pottsau</span></a>
+   <a class="enamel" href="#">Discord <span>beitreten</span></a>
+  </div>
+  <div class="bon">
+   <h3>IMBISS POTTSAU</h3>
+   <div class="c">Tel. 0201 / 000 000 · Bon-Nr. 0001</div>
+   <form onsubmit="return false">
+    <input placeholder="Name / Spitzname">
+    <input placeholder="E-Mail">
+    <textarea rows="4" placeholder="Deine Bestellung (Nachricht)"></textarea>
+    <div class="tot"><span>1× Anfrage</span><span>0,00 €</span></div>
+    <a class="btn" href="#">Abschicken</a>
+   </form>
+  </div>
+ </div>
+</section>
+
+<section id="impressum" style="padding-top:20px">
+ <div class="head"><h2>Impressum</h2></div>
+ <div class="imp"><h3>Angaben gemäß § 5 DDG</h3>Pottsau Airsoft<br>Vorname Nachname · Musterstraße 1 · 12345 Musterstadt<br>E-Mail: kontakt@pottsau.example</div>
+</section>
+
+<footer>
+ <div class="gl">Glück auf!</div>
+ <small>© 2026 POTTSAU AIRSOFT · <a href="#impressum">IMPRESSUM</a> · <a href="#kontakt">KONTAKT</a></small>
+</footer>
+</body>
+</html>

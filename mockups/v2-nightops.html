@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>POTTSAU Airsoft – V2 Night Ops</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050805;--g:#39ff7a;--gd:#1f9a4a;--a:#ffb000;--panel:rgba(57,255,122,.05);--t:#b8f5c9}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--t);font:16px/1.65 'Share Tech Mono',monospace;
+ background-image:linear-gradient(rgba(57,255,122,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(57,255,122,.04) 1px,transparent 1px);background-size:40px 40px}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;background:repeating-linear-gradient(0deg,rgba(0,0,0,.22) 0 1px,transparent 1px 3px)}
+h1,h2,h3{font-family:'Rajdhani',sans-serif;text-transform:uppercase;letter-spacing:.12em}
+a{color:var(--g)}
+header{position:sticky;top:0;z-index:20;background:rgba(5,8,5,.92);border-bottom:1px solid var(--gd);display:flex;justify-content:space-between;align-items:center;padding:10px 28px;backdrop-filter:blur(4px)}
+.logo{font:700 26px 'Rajdhani';letter-spacing:.2em;color:var(--g);text-decoration:none;text-shadow:0 0 12px rgba(57,255,122,.7)}
+.logo small{color:var(--a);font:12px 'Share Tech Mono';margin-left:10px;letter-spacing:.1em;text-shadow:none}
+nav{display:flex;gap:6px}
+nav a{color:var(--t);text-decoration:none;padding:6px 14px;border:1px solid transparent;font-size:14px;letter-spacing:.1em;text-transform:uppercase}
+nav a::before{content:"> ";color:var(--gd)}
+nav a:hover{border-color:var(--g);color:var(--g);background:var(--panel)}
+#burger{display:none;background:none;border:1px solid var(--g);color:var(--g);font:20px monospace;padding:2px 12px}
+.hud{position:relative}
+.hud::before,.hud::after,.hud>.c1,.hud>.c2{content:"";position:absolute;width:20px;height:20px;border:2px solid var(--g);pointer-events:none}
+.hud::before{left:-1px;top:-1px;border-right:0;border-bottom:0}
+.hud::after{right:-1px;bottom:-1px;border-left:0;border-top:0}
+.hud>.c1{right:-1px;top:-1px;border-left:0;border-bottom:0}
+.hud>.c2{left:-1px;bottom:-1px;border-right:0;border-top:0}
+.hero{min-height:84vh;display:grid;place-items:center;padding:60px 24px;position:relative;overflow:hidden}
+.hero .reticle{position:absolute;width:min(78vw,560px);aspect-ratio:1;border:1px solid var(--gd);border-radius:50%;opacity:.5}
+.hero .reticle::before,.hero .reticle::after{content:"";position:absolute;background:var(--gd)}
+.hero .reticle::before{left:50%;top:-30px;bottom:-30px;width:1px}
+.hero .reticle::after{top:50%;left:-30px;right:-30px;height:1px}
+.hero .in{position:relative;text-align:center;max-width:760px}
+.sys{color:var(--a);font-size:14px;letter-spacing:.15em}
+.hero h1{font-size:clamp(54px,11vw,128px);line-height:1;color:var(--g);text-shadow:0 0 28px rgba(57,255,122,.55);margin:14px 0}
+.hero h1::after{content:"_";animation:bl 1s steps(2) infinite}
+@keyframes bl{50%{opacity:0}}
+.hero p{margin:12px auto 28px;max-width:600px}
+.btn{display:inline-block;text-decoration:none;color:var(--bg);background:var(--g);font:700 17px 'Rajdhani';letter-spacing:.25em;text-transform:uppercase;padding:10px 28px}
+.btn:hover{background:var(--a)}
+.btn.o{background:none;color:var(--g);border:1px solid var(--g)}
+section{padding:80px 28px;max-width:1160px;margin:auto}
+.h{display:flex;gap:14px;align-items:baseline;margin-bottom:34px;border-bottom:1px solid var(--gd);padding-bottom:10px}
+.h h2{font-size:clamp(26px,4vw,40px);color:var(--g)}
+.h span{color:var(--a);font-size:13px}
+.about{display:grid;grid-template-columns:1.3fr 1fr;gap:32px}
+.panel{background:var(--panel);border:1px solid var(--gd);padding:24px}
+.row{display:flex;justify-content:space-between;border-bottom:1px dashed var(--gd);padding:8px 0}
+.row b{color:var(--g);font-weight:400}
+.bar{height:6px;background:rgba(57,255,122,.15);margin-top:4px}
+.bar i{display:block;height:100%;background:var(--g);box-shadow:0 0 8px var(--g)}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:22px}
+.shot{border:1px solid var(--gd);background:var(--panel);padding:8px}
+.shot .img{aspect-ratio:4/3;position:relative;display:grid;place-items:center;color:var(--gd);background:radial-gradient(circle at 50% 40%,#0e2a17,#030603 75%);overflow:hidden}
+.shot .img::before{content:"";position:absolute;width:70px;height:70px;border:1px solid var(--g);border-radius:50%;opacity:.5}
+.shot .img::after{content:"REC ●";position:absolute;left:10px;top:8px;color:#ff4a3a;font-size:12px}
+.shot .meta{display:flex;justify-content:space-between;font-size:12px;color:var(--a);margin:10px 2px 2px}
+.shot h3{font-size:19px;color:var(--g)}
+.shot p{font-size:14px;opacity:.8}
+.sp{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
+.sp div{border:1px solid var(--gd);padding:30px 14px;text-align:center;font:700 20px 'Rajdhani';letter-spacing:.2em;color:var(--g);background:var(--panel)}
+.sp div small{display:block;font:12px 'Share Tech Mono';color:var(--a);letter-spacing:.1em;margin-top:4px}
+.contact{display:grid;grid-template-columns:1fr 1.2fr;gap:32px}
+.chan{display:grid;gap:10px}
+.chan a{display:flex;justify-content:space-between;padding:14px 16px;border:1px solid var(--gd);text-decoration:none;color:var(--t);background:var(--panel)}
+.chan a:hover{border-color:var(--g);color:var(--g)}
+.chan a span{color:var(--a)}
+form{display:grid;gap:12px}
+input,textarea{width:100%;background:#020402;border:1px solid var(--gd);color:var(--g);padding:12px;font:inherit}
+input:focus,textarea:focus{outline:1px solid var(--g);box-shadow:0 0 10px rgba(57,255,122,.4)}
+footer{border-top:1px solid var(--gd);text-align:center;padding:26px;font-size:13px;letter-spacing:.1em;color:var(--gd)}
+@media(max-width:820px){
+ #burger{display:block}
+ nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--bg);padding:12px 20px;border-bottom:1px solid var(--gd)}
+ nav.open{display:flex}
+ .about,.contact{grid-template-columns:1fr}
+ .logo small{display:none}
+}
+</style>
+</head>
+<body>
+<header>
+ <a class="logo" href="#top">POTTSAU<small>// SYS ONLINE</small></a>
+ <button id="burger" onclick="document.querySelector('nav').classList.toggle('open')">≡</button>
+ <nav><a href="#top">Start</a><a href="#galerie">Galerie</a><a href="#sponsoren">Sponsoren</a><a href="#kontakt">Kontakt</a><a href="#impressum">Impressum</a></nav>
+</header>
+
+<div class="hero" id="top">
+ <div class="reticle"></div>
+ <div class="in">
+  <div class="sys">[ VERBINDUNG HERGESTELLT ] // KOORD 51.4556° N 7.0116° E</div>
+  <h1>POTTSAU</h1>
+  <p>Airsoft-Team aus dem Pott. Taktik, Teamplay und ein bisschen Dreck unter den Nägeln. Willkommen im Einsatzzentrum.</p>
+  <a class="btn" href="#galerie">Einsatzlog öffnen</a> <a class="btn o" href="#kontakt">Kontakt aufnehmen</a>
+ </div>
+</div>
+
+<section id="team">
+ <div class="h"><h2>Profil</h2><span>// TEAM-DATEN</span></div>
+ <div class="about">
+  <div class="panel hud"><i class="c1"></i><i class="c2"></i>
+   <p>Die Pottsau wurde 2019 gegründet. Wir spielen MilSim, Woodland und CQB – mit Fairplay als oberster Regel.</p><br>
+   <p>Neue Operator sind willkommen. Meld dich einfach. <em>(Blindtext – wird ersetzt.)</em></p>
+  </div>
+  <div class="panel hud"><i class="c1"></i><i class="c2"></i>
+   <div class="row"><span>OPERATOR</span><b>18</b></div>
+   <div class="row"><span>GEGRÜNDET</span><b>2019</b></div>
+   <div class="row"><span>EINSÄTZE</span><b>40+</b></div>
+   <div class="row"><span>REGION</span><b>NRW</b></div>
+   <div style="margin-top:14px;font-size:13px">BEREITSCHAFT<div class="bar"><i style="width:87%"></i></div></div>
+  </div>
+ </div>
+</section>
+
+<section id="galerie">
+ <div class="h"><h2>Einsatzlog</h2><span>// GALERIE · NEUESTE ZUERST</span></div>
+ <div class="gal">
+  <div class="shot"><div class="img">[ BILD 01 ]</div><div class="meta"><span>05.10.2026</span><span>NEU</span></div><h3>Nachtspiel Zeche West</h3><p>Beschreibung aus dem Upload-Tool.</p></div>
+  <div class="shot"><div class="img">[ BILD 02 ]</div><div class="meta"><span>21.09.2026</span></div><h3>Squad-Briefing</h3><p>Kurzer Text zum Foto.</p></div>
+  <div class="shot"><div class="img">[ BILD 03 ]</div><div class="meta"><span>07.09.2026</span></div><h3>Sturm auf die Halle</h3><p>Kurzer Text zum Foto.</p></div>
+  <div class="shot"><div class="img">[ BILD 04 ]</div><div class="meta"><span>17.08.2026</span></div><h3>Gruppenbild Sommer-Op</h3><p>Kurzer Text zum Foto.</p></div>
+  <div class="shot"><div class="img">[ BILD 05 ]</div><div class="meta"><span>29.06.2026</span></div><h3>Funkcheck</h3><p>Kurzer Text zum Foto.</p></div>
+  <div class="shot"><div class="img">[ BILD 06 ]</div><div class="meta"><span>14.06.2026</span></div><h3>Aufmarsch im Wald</h3><p>Kurzer Text zum Foto.</p></div>
+ </div>
+</section>
+
+<section id="sponsoren">
+ <div class="h"><h2>Sponsoren</h2><span>// UNTERSTÜTZER</span></div>
+ <div class="sp">
+  <div class="hud"><i class="c1"></i><i class="c2"></i>SPONSOR EINS<small>HAUPTSPONSOR</small></div>
+  <div class="hud"><i class="c1"></i><i class="c2"></i>SPONSOR ZWEI<small>PARTNER</small></div>
+  <div class="hud"><i class="c1"></i><i class="c2"></i>SPONSOR DREI<small>PARTNER</small></div>
+  <div class="hud"><i class="c1"></i><i class="c2"></i>SPONSOR VIER<small>UNTERSTÜTZER</small></div>
+ </div>
+</section>
+
+<section id="kontakt">
+ <div class="h"><h2>Social &amp; Kontakt</h2><span>// KANÄLE</span></div>
+ <div class="contact">
+  <div class="chan">
+   <a href="#">INSTAGRAM <span>@pottsau ›</span></a>
+   <a href="#">FACEBOOK <span>/pottsau ›</span></a>
+   <a href="#">YOUTUBE <span>/pottsau ›</span></a>
+   <a href="#">DISCORD <span>beitreten ›</span></a>
+  </div>
+  <form onsubmit="return false">
+   <input placeholder="> Name / Rufzeichen">
+   <input placeholder="> E-Mail">
+   <textarea rows="5" placeholder="> Nachricht"></textarea>
+   <a class="btn" href="#" style="text-align:center">Übertragen</a>
+  </form>
+ </div>
+</section>
+
+<section id="impressum">
+ <div class="h"><h2>Impressum</h2><span>// RECHTLICHES</span></div>
+ <div class="panel hud"><i class="c1"></i><i class="c2"></i>
+  <p><b style="color:var(--g)">Angaben gemäß § 5 DDG</b><br>Pottsau Airsoft<br>Vorname Nachname · Musterstraße 1 · 12345 Musterstadt<br>E-Mail: kontakt@pottsau.example</p>
+ </div>
+</section>
+
+<footer>© 2026 POTTSAU AIRSOFT // <a href="#impressum">IMPRESSUM</a> // <a href="#kontakt">KONTAKT</a></footer>
+</body>
+</html>
