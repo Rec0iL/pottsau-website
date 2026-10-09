@@ -6,7 +6,7 @@
 <title>POTTSAU Airsoft – V6 Ruhrpott</title>
 <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500&family=Permanent+Marker&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
 <style>
-:root{--kohle:#141414;--stahl:#2c2f32;--stahl2:#43474b;--rost:#c4561e;--senf:#f2b705;--ketchup:#c8201a;--bier:#f6a800;--schaum:#fff4d2;--pig:#f4a6b4;--blau:#1d4f8a;--weiss:#f4f1e8;--t:#efe9da}
+:root{--kohle:#141414;--stahl:#2c2f32;--stahl2:#43474b;--rost:#c4561e;--senf:#f2b705;--ketchup:#c8201a;--amber:#f6a800;--pig:#f4a6b4;--blau:#1d4f8a;--weiss:#f4f1e8;--t:#efe9da}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth}
 body{background:var(--kohle);color:var(--t);font:17px/1.6 'Barlow',sans-serif;
@@ -33,7 +33,7 @@ nav a:hover{background:var(--rost);border-color:var(--senf)}
 /* Hero */
 .hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#0c0c0f 0%,#241713 50%,#6d2f10 82%,#c4561e 100%);min-height:88vh;display:grid;align-items:center;padding:60px 24px 200px}
 .hero .sky-stars{position:absolute;inset:0;background-image:radial-gradient(#fff 1px,transparent 1.5px);background-size:90px 90px;opacity:.25;mask:linear-gradient(180deg,#000,transparent 55%)}
-.skyline{position:absolute;left:0;right:0;bottom:0;width:100%;height:230px}
+.skyline{position:absolute;left:0;right:0;bottom:0;width:100%;height:clamp(210px,21.7vw,420px)}
 .smoke circle{fill:#9a8f88;opacity:.28}
 .hero-in{position:relative;z-index:2;max-width:1160px;margin:auto;display:grid;grid-template-columns:1.2fr 1fr;gap:20px;align-items:center;width:100%}
 .glueck{font:400 clamp(20px,3vw,30px) 'Permanent Marker';color:var(--senf);transform:rotate(-3deg);display:inline-block;margin-bottom:6px;text-shadow:2px 2px 0 #000}
@@ -41,13 +41,13 @@ nav a:hover{background:var(--rost);border-color:var(--senf)}
 .hero h1 span{color:var(--pig)}
 .hero p.lead{font-size:19px;max-width:560px;margin:20px 0 28px}
 .btn{display:inline-block;text-decoration:none;font:400 17px 'Alfa Slab One';letter-spacing:.06em;text-transform:uppercase;color:#1b1000;background:var(--senf);padding:12px 28px;border:3px solid #000;border-radius:6px;box-shadow:4px 4px 0 #000}
-.btn:hover{background:var(--bier);transform:translate(2px,2px);box-shadow:2px 2px 0 #000}
+.btn:hover{background:var(--amber);transform:translate(2px,2px);box-shadow:2px 2px 0 #000}
 .btn.alt{background:var(--weiss)}
 .pigwrap{position:relative;display:grid;place-items:center}
 .pigwrap .pig{width:min(100%,380px);filter:drop-shadow(0 14px 14px rgba(0,0,0,.6))}
 .bubble{position:absolute;right:-6px;top:-14px;background:var(--weiss);color:#111;font:400 18px 'Permanent Marker';padding:10px 16px;border-radius:16px 16px 16px 2px;transform:rotate(4deg);box-shadow:3px 3px 0 #000;border:3px solid #000}
 .float{position:absolute;filter:drop-shadow(0 8px 6px rgba(0,0,0,.6))}
-.float.b{left:-4%;bottom:6%;width:92px;transform:rotate(-10deg)}
+.float.b{left:-4%;bottom:4%;width:96px;transform:rotate(-8deg)}
 .float.w{right:-6%;bottom:-2%;width:170px;transform:rotate(6deg)}
 
 /* Ticker */
@@ -71,7 +71,7 @@ section{padding:84px 24px;max-width:1160px;margin:auto}
 .karte .row i{flex:1;border-bottom:2px dotted #444;transform:translateY(-4px)}
 .karte .row b{font:400 20px 'Alfa Slab One';color:var(--ketchup)}
 .karte small{display:block;text-align:center;margin-top:12px;font:400 17px 'Permanent Marker';color:#333}
-.werte{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;margin-top:50px}
+.werte{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px;margin-top:50px}
 .wert{background:var(--stahl);border:3px solid #000;border-radius:8px;padding:22px;text-align:center;box-shadow:5px 5px 0 #000}
 .wert svg{width:96px;height:80px;margin:0 auto 8px}
 .wert h3{font-size:20px;color:var(--senf);margin-bottom:4px}
@@ -84,15 +84,20 @@ section{padding:84px 24px;max-width:1160px;margin:auto}
 .foto:nth-child(3n) .img{background:linear-gradient(150deg,#4a5a66,#1d262d)}
 .foto h3{font-size:17px;margin-top:12px;color:#1a1a1a}
 .foto p{font-size:15px;color:#333}
-.deckel{position:absolute;z-index:2;right:-14px;top:-18px;width:74px;height:74px;border-radius:50%;display:grid;place-items:center;text-align:center;font:400 12px/1.15 'Alfa Slab One';color:#4a2a10;background:radial-gradient(circle,#e8d3a0 0 55%,#d8bd85 56% 62%,#e8d3a0 63%);border:2px solid #b49355;box-shadow:0 4px 6px rgba(0,0,0,.6);transform:rotate(12deg)}
-.deckel small{display:block;font:600 10px 'Barlow Condensed';letter-spacing:.1em}
+.marke{position:absolute;z-index:2;right:-14px;top:-20px;width:84px;height:64px;padding-top:12px;border-radius:14px;display:grid;place-items:center;text-align:center;font:400 14px/1.1 'Alfa Slab One';color:#5a3f10;
+ background:linear-gradient(145deg,#f1d27a,#c99a3b 45%,#a67a22 70%,#e0b95a);border:2px solid #7d5a18;box-shadow:0 5px 7px rgba(0,0,0,.6),inset 0 0 0 3px rgba(255,235,170,.35),inset 0 -3px 5px rgba(90,60,10,.35);text-shadow:0 1px 0 rgba(255,245,200,.55);transform:rotate(8deg)}
+.marke::before{content:"";position:absolute;left:50%;top:6px;width:11px;height:11px;margin-left:-5.5px;border-radius:50%;background:#141414;box-shadow:inset 0 2px 3px #000,0 1px 0 rgba(255,235,170,.7)}
+.marke small{display:block;font:600 10px 'Barlow Condensed';letter-spacing:.14em}
 .neu{position:absolute;left:-10px;top:14px;background:var(--ketchup);color:#fff;font:400 14px 'Alfa Slab One';padding:2px 14px;transform:rotate(-6deg);border:2px solid #000;box-shadow:2px 2px 0 #000;z-index:1}
 
 .sp{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:30px;justify-items:center}
-.coaster{width:200px;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;text-align:center;padding:30px;font:400 20px/1.15 'Alfa Slab One';color:#4a2a10;
- background:radial-gradient(circle,#ecd9a8 0 56%,#d2b377 57% 61%,#ecd9a8 62% 100%);border:3px solid #a98a4a;box-shadow:0 8px 12px rgba(0,0,0,.65),inset 0 0 18px rgba(120,80,30,.35)}
-.coaster small{display:block;font:700 12px 'Barlow Condensed';letter-spacing:.2em;color:var(--ketchup);margin-top:4px}
-.coaster:nth-child(even){transform:rotate(8deg)}.coaster:nth-child(odd){transform:rotate(-5deg)}
+.zm{position:relative;width:210px;aspect-ratio:1.15;padding:36px 14px 14px;border-radius:20px;display:grid;place-items:center;text-align:center;font:400 21px/1.15 'Alfa Slab One';color:#5a3f10;
+ background:linear-gradient(145deg,#f1d27a,#c99a3b 45%,#a67a22 70%,#e0b95a);border:3px solid #7d5a18;box-shadow:0 9px 13px rgba(0,0,0,.65),inset 0 0 0 5px rgba(255,235,170,.35),inset 0 -6px 9px rgba(90,60,10,.35);text-shadow:0 1px 0 rgba(255,245,200,.55)}
+.zm::before{content:"";position:absolute;left:50%;top:12px;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:#141414;box-shadow:inset 0 3px 4px #000,0 1px 0 rgba(255,235,170,.7)}
+.zm em{position:absolute;right:14px;bottom:8px;font:600 11px 'Barlow Condensed';font-style:normal;letter-spacing:.14em;opacity:.8}
+.zm small{display:block;font:700 12px 'Barlow Condensed';letter-spacing:.2em;color:#8a2a14;margin-top:4px}
+.zm:nth-child(even){transform:rotate(4deg)}.zm:nth-child(odd){transform:rotate(-3deg)}
+.sp{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:34px;justify-items:center}
 .hint{text-align:center;margin-top:34px;font:400 22px 'Permanent Marker';color:var(--senf)}
 
 .contact{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:start}
@@ -132,8 +137,9 @@ footer small{opacity:.75;letter-spacing:.1em}
 <!-- Illustrationen als wiederverwendbare Symbole -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
  <defs>
-  <clipPath id="glassclip"><path d="M24 22L76 22 68 72Q63 100 54 112L54 134Q72 138 74 150L26 150Q28 138 46 134L46 112Q37 100 32 72Z"/></clipPath>
-  <linearGradient id="beerg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffc21a"/><stop offset="1" stop-color="#d98200"/></linearGradient>
+  <radialGradient id="lampglow"><stop offset="0" stop-color="#ffd24a" stop-opacity=".85"/><stop offset="1" stop-color="#ffd24a" stop-opacity="0"/></radialGradient>
+  <linearGradient id="brass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#a67a22"/><stop offset=".35" stop-color="#f1d27a"/><stop offset="1" stop-color="#9a6f1c"/></linearGradient>
+  <linearGradient id="neck" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3fae8a"/><stop offset="1" stop-color="#8a5ab0"/></linearGradient>
   <symbol id="pig" viewBox="0 0 200 200">
    <path d="M44 76C24 36 30 14 70 38Z" fill="#e98a9c" stroke="#2a1515" stroke-width="5" stroke-linejoin="round"/>
    <path d="M156 76C176 36 170 14 130 38Z" fill="#e98a9c" stroke="#2a1515" stroke-width="5" stroke-linejoin="round"/>
@@ -179,13 +185,40 @@ footer small{opacity:.75;letter-spacing:.1em}
    <g fill="#e8a500"><circle cx="56" cy="84" r="2.2"/><circle cx="70" cy="80" r="2"/><circle cx="84" cy="86" r="2.4"/><circle cx="100" cy="82" r="2"/><circle cx="114" cy="88" r="2.3"/><circle cx="64" cy="96" r="2"/><circle cx="92" cy="98" r="2.2"/><circle cx="126" cy="94" r="2"/><circle cx="48" cy="92" r="2"/></g>
    <path d="M118 66L132 56M126 70L142 62" stroke="#c9a15b" stroke-width="5" stroke-linecap="round"/>
   </symbol>
-  <symbol id="beer" viewBox="0 0 100 160">
-   <ellipse cx="50" cy="153" rx="30" ry="5" fill="#000" opacity=".3"/>
-   <g clip-path="url(#glassclip)"><rect x="0" y="34" width="100" height="80" fill="url(#beerg)"/>
-    <g fill="#fff" opacity=".45"><circle cx="40" cy="96" r="2"/><circle cx="52" cy="82" r="2.4"/><circle cx="60" cy="100" r="1.8"/><circle cx="44" cy="64" r="2"/><circle cx="58" cy="58" r="2.4"/><circle cx="36" cy="48" r="1.8"/><circle cx="64" cy="76" r="1.6"/></g>
-    <rect x="30" y="34" width="8" height="60" fill="#fff" opacity=".18"/></g>
-   <g fill="#fff4d2" stroke="#e3d3a0" stroke-width="1.5"><circle cx="30" cy="22" r="12"/><circle cx="44" cy="17" r="13"/><circle cx="58" cy="17" r="13"/><circle cx="71" cy="22" r="12"/><rect x="26" y="22" width="48" height="14"/></g>
-   <path d="M24 22L76 22 68 72Q63 100 54 112L54 134Q72 138 74 150L26 150Q28 138 46 134L46 112Q37 100 32 72Z" fill="none" stroke="#dcecf0" stroke-width="3.5" stroke-linejoin="round" opacity=".9"/>
+  <symbol id="lamp" viewBox="0 0 100 150">
+   <circle cx="50" cy="78" r="46" fill="url(#lampglow)"/>
+   <path d="M38 24C38 4 62 4 62 24" fill="none" stroke="#555a5f" stroke-width="5" stroke-linecap="round"/>
+   <rect x="32" y="22" width="36" height="12" rx="4" fill="#6a6e72" stroke="#2b2d2f" stroke-width="3"/>
+   <rect x="35" y="34" width="30" height="46" rx="7" fill="#ffd77a" fill-opacity=".35" stroke="#8a8f94" stroke-width="3"/>
+   <path d="M45 35V80M55 35V80M35 50H65M35 64H65" stroke="#8a8f94" stroke-width="1.5" opacity=".8"/>
+   <path d="M50 74C38 66 44 54 50 44C56 54 62 66 50 74Z" fill="#ffb21a"/><path d="M50 72C44 67 47 60 50 54C53 60 56 67 50 72Z" fill="#fff3b0"/>
+   <rect x="29" y="80" width="42" height="44" rx="7" fill="url(#brass)" stroke="#6b4d12" stroke-width="3"/>
+   <path d="M29 96H71M29 108H71" stroke="#6b4d12" stroke-width="2.5" opacity=".7"/>
+   <rect x="27" y="124" width="46" height="11" rx="4" fill="#7d5a18" stroke="#4a360c" stroke-width="3"/>
+  </symbol>
+  <symbol id="henkel" viewBox="0 0 100 110">
+   <ellipse cx="50" cy="104" rx="34" ry="5" fill="#000" opacity=".3"/>
+   <path d="M22 30C22 -6 78 -6 78 30" fill="none" stroke="#3a3d40" stroke-width="4" stroke-linecap="round"/>
+   <g stroke="#1d4f8a" stroke-width="3" stroke-linejoin="round">
+    <rect x="18" y="72" width="64" height="28" rx="8" fill="#f1ede0"/><rect x="18" y="44" width="64" height="28" rx="6" fill="#f1ede0"/><path d="M22 44V34Q50 22 78 34V44Z" fill="#f1ede0"/>
+   </g>
+   <rect x="46" y="14" width="8" height="10" rx="3" fill="#3a3d40"/>
+   <path d="M30 34V100M70 34V100" stroke="#6d7277" stroke-width="3.5" stroke-linecap="round"/>
+   <path d="M30 100v4M70 100v4" stroke="#6d7277" stroke-width="3.5"/>
+   <path d="M24 78c3-3 8-3 11 0" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".8"/>
+  </symbol>
+  <symbol id="taube" viewBox="0 0 200 140">
+   <path d="M44 74L4 58 10 92Z" fill="#6f7c92" stroke="#3f485a" stroke-width="3" stroke-linejoin="round"/>
+   <ellipse cx="88" cy="80" rx="58" ry="34" fill="#94a1b6" stroke="#3f485a" stroke-width="3"/>
+   <circle cx="128" cy="74" r="30" fill="#94a1b6" stroke="#3f485a" stroke-width="3"/>
+   <path d="M118 52Q142 40 152 70Q140 72 128 62Z" fill="url(#neck)" opacity=".85"/>
+   <circle cx="152" cy="50" r="18" fill="#8693a9" stroke="#3f485a" stroke-width="3"/>
+   <path d="M168 47L190 55L168 61Z" fill="#e8b04a" stroke="#3f485a" stroke-width="2.5" stroke-linejoin="round"/><circle cx="170" cy="49" r="3" fill="#f4f1e8"/>
+   <circle cx="157" cy="46" r="4.5" fill="#e8742a" stroke="#3f485a" stroke-width="1.5"/><circle cx="157.5" cy="46" r="2" fill="#111"/>
+   <path d="M138 38C140 22 158 18 170 30Q158 28 138 38Z" fill="#4b5320" stroke="#1a1d0c" stroke-width="3" stroke-linejoin="round"/>
+   <path d="M50 74Q92 52 132 76Q102 100 54 88Z" fill="#6f7c92" stroke="#3f485a" stroke-width="3" stroke-linejoin="round"/>
+   <path d="M64 74Q92 64 118 76M62 82Q90 80 112 84" stroke="#3f485a" stroke-width="2.5" fill="none" opacity=".7"/>
+   <path d="M96 112V128M112 112V128M90 128H102M106 128H118" stroke="#d06a7a" stroke-width="4" stroke-linecap="round"/>
   </symbol>
   <symbol id="hammer" viewBox="0 0 100 100">
    <g transform="rotate(45 50 50)"><rect x="47" y="10" width="6" height="84" rx="2" fill="#8b6a3e"/><rect x="29" y="8" width="42" height="17" rx="2" fill="#8d9298" stroke="#3a3d40" stroke-width="3"/></g>
@@ -204,7 +237,7 @@ footer small{opacity:.75;letter-spacing:.1em}
 
 <div class="hero" id="top">
  <div class="sky-stars"></div>
- <svg class="skyline" viewBox="0 0 1200 230" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+ <svg class="skyline" viewBox="0 -30 1200 260" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
   <g class="smoke"><circle cx="918" cy="58" r="26"/><circle cx="944" cy="36" r="34"/><circle cx="985" cy="20" r="40"/><circle cx="1035" cy="10" r="44"/><circle cx="262" cy="70" r="22"/><circle cx="284" cy="46" r="30"/><circle cx="318" cy="26" r="36"/></g>
   <g fill="#0d0d0d" stroke="none">
    <path d="M0 230V178Q70 120 160 150T330 190V230Z"/>
@@ -226,7 +259,7 @@ footer small{opacity:.75;letter-spacing:.1em}
    <path d="M586 230L618 52L650 230M600 150H636M594 190H642M606 112H630"/>
    <path d="M600 150L636 190M636 150L600 190M608 112L626 150M628 112L610 150"/>
   </g>
-  <g fill="none" stroke="#0d0d0d" stroke-width="7"><circle cx="618" cy="44" r="19"/><path d="M618 25V63M599 44H637" stroke-width="4"/></g>
+  <g fill="none" stroke="#0d0d0d" stroke-linecap="round"><circle cx="618" cy="36" r="25" stroke-width="7"/><circle cx="618" cy="36" r="5" fill="#0d0d0d" stroke="none"/><path d="M618 11V61M593 36H643M600.3 18.3L635.7 53.7M635.7 18.3L600.3 53.7" stroke-width="4"/><path d="M606 66H630" stroke-width="7"/></g>
   <rect x="0" y="222" width="1200" height="8" fill="#0d0d0d"/>
  </svg>
 
@@ -234,19 +267,19 @@ footer small{opacity:.75;letter-spacing:.1em}
   <div>
    <span class="glueck">Glück auf, Kumpel!</span>
    <h1>POTT<span>SAU</span></h1>
-   <p class="lead">Airsoft aus'm Pott: laut, dreckig, herzlich – und nach'm Spiel gibt's Currywurst Pommes und ein kühles Pils. Willkommen bei der Pottsau!</p>
+   <p class="lead">Airsoft aus'm Pott: laut, dreckig, herzlich – und wenn's geknallt hat, gibt's Currywurst Pommes aus'm Henkelmann. Willkommen bei der Pottsau!</p>
    <a class="btn" href="#galerie">Zur Galerie</a> <a class="btn alt" href="#kontakt">Mitspielen</a>
   </div>
   <div class="pigwrap">
    <span class="bubble">Wat is los?!</span>
    <svg class="pig i" viewBox="0 0 200 200"><use href="#pig"/></svg>
-   <svg class="float b i" viewBox="0 0 100 160"><use href="#beer"/></svg>
+   <svg class="float b i" viewBox="0 0 100 150"><use href="#lamp"/></svg>
    <svg class="float w i" viewBox="0 0 200 150"><use href="#wurst"/></svg>
   </div>
  </div>
 </div>
 
-<div class="ticker"><div><span>★ CURRYWURST ROT-WEISS</span><span>★ GLÜCK AUF</span><span>★ FEIERABENDBIER</span><span>★ SCHLÄGEL &amp; EISEN</span><span>★ PILS VOM FASS</span><span>★ POTT FOREVER</span><span>★ KUMPELS</span><span>★ CURRYWURST ROT-WEISS</span><span>★ GLÜCK AUF</span><span>★ FEIERABENDBIER</span><span>★ SCHLÄGEL &amp; EISEN</span><span>★ PILS VOM FASS</span><span>★ POTT FOREVER</span><span>★ KUMPELS</span></div></div>
+<div class="ticker"><div><span>★ CURRYWURST ROT-WEISS</span><span>★ GLÜCK AUF</span><span>★ HENKELMANN</span><span>★ SCHLÄGEL &amp; EISEN</span><span>★ BRIEFTAUBEN</span><span>★ POTT FOREVER</span><span>★ KUMPELS</span><span>★ CURRYWURST ROT-WEISS</span><span>★ GLÜCK AUF</span><span>★ HENKELMANN</span><span>★ SCHLÄGEL &amp; EISEN</span><span>★ BRIEFTAUBEN</span><span>★ POTT FOREVER</span><span>★ KUMPELS</span></div></div>
 
 <section id="team">
  <div class="head"><svg class="i" viewBox="0 0 100 100"><use href="#hammer"/></svg><h2>Wer wir sind</h2><span class="marker">ehrlich &amp; direkt</span></div>
@@ -262,41 +295,42 @@ footer small{opacity:.75;letter-spacing:.1em}
    <div class="row">Einsätze<i></i><b>40+</b></div>
    <div class="row">Einsatzgebiet<i></i><b>NRW</b></div>
    <div class="row">Currywurst Pommes<i></i><b>∞</b></div>
-   <small>… und dat Pils is auch kalt!</small>
+   <small>… mit Pommes Schranke, wie sich dat gehört!</small>
   </div>
  </div>
  <div class="werte">
   <div class="wert"><svg class="i" viewBox="0 0 200 150"><use href="#wurst"/></svg><h3>Currywurst-Prinzip</h3><p>Schnell, deftig, ehrlich – so spielen und so reden wir.</p></div>
-  <div class="wert"><svg class="i" viewBox="0 0 100 160"><use href="#beer"/></svg><h3>Feierabendbier</h3><p>Nach dem Spiel sitzen wir zusammen. Gewinnen ist schön, Pils ist besser.</p></div>
+  <div class="wert"><svg class="i" viewBox="0 0 100 110"><use href="#henkel"/></svg><h3>Henkelmann-Pause</h3><p>Nach dem Spiel wird geteilt, was eingepackt wurde. Keiner geht hungrig heim.</p></div>
+  <div class="wert"><svg class="i" viewBox="0 0 100 150"><use href="#lamp"/></svg><h3>Kumpel-Prinzip</h3><p>Wie unter Tage: Hier lässt keiner den andern allein.</p></div>
   <div class="wert"><svg class="i" viewBox="0 0 200 200"><use href="#pig"/></svg><h3>Fairplay</h3><p>Hit ist Hit. Wir sind Säue, aber keine Schweine.</p></div>
  </div>
-</section>
+ </section>
 
 <div class="hazard"></div>
 
 <section id="galerie">
- <div class="head"><svg class="i" viewBox="0 0 100 160"><use href="#beer"/></svg><h2>Galerie</h2><span class="marker">frisch gezapft – neueste zuerst</span></div>
+ <div class="head"><svg class="i" style="width:84px" viewBox="0 0 200 140"><use href="#taube"/></svg><h2>Galerie</h2><span class="marker">per Brieftaube geliefert – neueste zuerst</span></div>
  <div class="gal">
-  <div class="foto"><span class="neu">NEU</span><span class="deckel"><span>05.10.<small>2026</small></span></span><div class="img">FOTO 01</div><h3>Nachtspiel Zeche West</h3><p>Beschreibung aus dem Upload-Tool.</p></div>
-  <div class="foto"><span class="deckel"><span>21.09.<small>2026</small></span></span><div class="img">FOTO 02</div><h3>Squad-Briefing</h3><p>Kurzer Text zum Foto.</p></div>
-  <div class="foto"><span class="deckel"><span>07.09.<small>2026</small></span></span><div class="img">FOTO 03</div><h3>Sturm auf die Halle</h3><p>Kurzer Text zum Foto.</p></div>
-  <div class="foto"><span class="deckel"><span>17.08.<small>2026</small></span></span><div class="img">FOTO 04</div><h3>Gruppenbild Sommer-Op</h3><p>Kurzer Text zum Foto.</p></div>
-  <div class="foto"><span class="deckel"><span>29.06.<small>2026</small></span></span><div class="img">FOTO 05</div><h3>Funkcheck</h3><p>Kurzer Text zum Foto.</p></div>
-  <div class="foto"><span class="deckel"><span>14.06.<small>2026</small></span></span><div class="img">FOTO 06</div><h3>Aufmarsch im Wald</h3><p>Kurzer Text zum Foto.</p></div>
+  <div class="foto"><span class="neu">NEU</span><span class="marke"><span>05.10.<small>2026</small></span></span><div class="img">FOTO 01</div><h3>Nachtspiel Zeche West</h3><p>Beschreibung aus dem Upload-Tool.</p></div>
+  <div class="foto"><span class="marke"><span>21.09.<small>2026</small></span></span><div class="img">FOTO 02</div><h3>Squad-Briefing</h3><p>Kurzer Text zum Foto.</p></div>
+  <div class="foto"><span class="marke"><span>07.09.<small>2026</small></span></span><div class="img">FOTO 03</div><h3>Sturm auf die Halle</h3><p>Kurzer Text zum Foto.</p></div>
+  <div class="foto"><span class="marke"><span>17.08.<small>2026</small></span></span><div class="img">FOTO 04</div><h3>Gruppenbild Sommer-Op</h3><p>Kurzer Text zum Foto.</p></div>
+  <div class="foto"><span class="marke"><span>29.06.<small>2026</small></span></span><div class="img">FOTO 05</div><h3>Funkcheck</h3><p>Kurzer Text zum Foto.</p></div>
+  <div class="foto"><span class="marke"><span>14.06.<small>2026</small></span></span><div class="img">FOTO 06</div><h3>Aufmarsch im Wald</h3><p>Kurzer Text zum Foto.</p></div>
  </div>
 </section>
 
 <div class="hazard"></div>
 
 <section id="sponsoren">
- <div class="head"><svg class="i" viewBox="0 0 100 100"><use href="#hammer"/></svg><h2>Sponsoren</h2><span class="marker">die Spendierhosen</span></div>
+ <div class="head"><svg class="i" viewBox="0 0 100 100"><use href="#hammer"/></svg><h2>Sponsoren</h2><span class="marker">Marke drauf, Glück auf!</span></div>
  <div class="sp">
-  <div class="coaster"><div>Sponsor<br>Eins<small>HAUPTSPONSOR</small></div></div>
-  <div class="coaster"><div>Sponsor<br>Zwei<small>PARTNER</small></div></div>
-  <div class="coaster"><div>Sponsor<br>Drei<small>PARTNER</small></div></div>
-  <div class="coaster"><div>Sponsor<br>Vier<small>UNTERSTÜTZER</small></div></div>
+  <div class="zm"><div>Sponsor<br>Eins<small>HAUPTSPONSOR</small></div><em>Nr. 001</em></div>
+  <div class="zm"><div>Sponsor<br>Zwei<small>PARTNER</small></div><em>Nr. 002</em></div>
+  <div class="zm"><div>Sponsor<br>Drei<small>PARTNER</small></div><em>Nr. 003</em></div>
+  <div class="zm"><div>Sponsor<br>Vier<small>UNTERSTÜTZER</small></div><em>Nr. 004</em></div>
  </div>
- <p class="hint">Dein Logo auf’m Bierdeckel? Ein Kasten Pils reicht schon als Anfang!</p>
+ <p class="hint">Dein Logo auf der Zechenmarke? Meld dich – Glück auf!</p>
 </section>
 
 <section id="kontakt">
